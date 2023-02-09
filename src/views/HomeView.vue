@@ -31,6 +31,10 @@ export default {
     }
 
     const addTodo = (new_todo_name) => {
+      if (new_todo_name.trim() == '') {
+        return
+      }
+      
       const new_todo = new Todo(false, new_todo_name)
       todos.value.push(new_todo);
       console.log(todos.value)
