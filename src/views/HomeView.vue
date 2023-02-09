@@ -1,18 +1,24 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <InputComponent />
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import InputComponent from '@/components/InputComponent.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+    InputComponent
   }
 }
 </script>
+
+<style>
+body {
+  background: rgb(78,77,154);
+  background: linear-gradient(138deg, rgba(78,77,154,1) 14%, rgba(4,20,50,1) 62%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+}
+</style>
