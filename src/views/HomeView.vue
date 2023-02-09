@@ -3,6 +3,7 @@
     <div class="todo">
       <InputComponent style="justify-content: center" @addTodo="addTodo" />
       <ListComponent :todos="todos" @toggleDone="toggleDone" @deleteTodo="deleteTodo" />
+      <h1 v-if="todos.length === 0">Hi ! This a a Todo App written in Vue</h1>
     </div>
   </div>  
 </template>

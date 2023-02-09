@@ -63,12 +63,6 @@ export default {
 .icon {
     height: 1.5rem;
     transition: 0.1s ease;
-
-    // &:hover {
-    //     height: 2rem;
-    //     transition: 0.1s ease;
-    //     cursor: pointer;
-    // }
 }
 
 .done{
