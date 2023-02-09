@@ -1,18 +1,23 @@
 <template>
-  <InputComponent style="justify-content: center" @addTodo="addTodo"/>
-  <ul>
-    <li v-for="(todo, index) in todos" :key="index">{{ todo }}</li>
-  </ul>
+  <div class="todo-wrapper">
+    <div class="todo">
+      <InputComponent style="justify-content: center" @addTodo="addTodo" />
+      <ListComponent :todos="todos" />
+    </div>
+  </div>  
 </template>
 
 <script>
 import InputComponent from '@/components/InputComponent.vue'
+import ListComponent from '@/components/ListComponent.vue'
+
 import { ref } from 'vue'
 
 export default {
   name: 'HomeView',
   components: {
-    InputComponent
+    InputComponent,
+    ListComponent
   },
   setup() {
     const todos = ref([]);
@@ -37,5 +42,15 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: white;
+}
+
+.todo-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.todo {
+  display: flex;
+  flex-direction: column;
 }
 </style>

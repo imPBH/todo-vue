@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss">
 .content-wrapper {
-    display: flex;
+    display:inline-flex;
 }
 
 .input-wrapper {

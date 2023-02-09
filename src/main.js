@@ -9,10 +9,12 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'
+import { faSquarePlus, faCircleCheck, faTrashCan } from '@fortawesome/free-regular-svg-icons'
 
 /* add icons to the library */
 library.add(faSquarePlus)
+library.add(faCircleCheck)
+library.add(faTrashCan)
 
 createApp(App)
 .use(router)
