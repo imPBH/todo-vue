@@ -14,6 +14,7 @@ import { ref } from 'vue'
 
 export default {
     name: 'InputComponent',
+    emits: ['addTodo'],
     setup(props, ctx) {
         const new_todo = ref('')
 

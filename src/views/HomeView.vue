@@ -2,7 +2,7 @@
   <div class="todo-wrapper">
     <div class="todo">
       <InputComponent style="justify-content: center" @addTodo="addTodo" />
-      <ListComponent :todos="todos" />
+      <ListComponent :todos="todos" @toggleDone="toggleDone" @deleteTodo="deleteTodo" />
     </div>
   </div>  
 </template>
@@ -21,15 +21,35 @@ export default {
   },
   setup() {
     const todos = ref([]);
+    
+    class Todo{
+      constructor(done, name) {
+        this.done = done;
+        this.name = name
+      }
+    }
 
-    const addTodo = (new_todo) => {
+    const addTodo = (new_todo_name) => {
+      const new_todo = new Todo(false, new_todo_name)
       todos.value.push(new_todo);
       console.log(todos.value)
     }
 
+    const toggleDone = (index) => {
+      todos.value[index].done = !todos.value[index].done
+      console.log(index + ' set to ' + todos.value[index].done)
+    }
+
+    const deleteTodo = (index) => {
+      todos.value.splice(index, 1);
+      console.log(index + " deleted")
+    }
+
     return {
       todos,
-      addTodo
+      addTodo,
+      toggleDone,
+      deleteTodo
     }
   }
 }

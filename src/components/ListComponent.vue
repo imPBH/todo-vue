@@ -1,34 +1,11 @@
 <template>
-  <!-- <span v-for="(todo, index) in todos" :key="index">{{ todo }}</span> -->
-  <div class="task-wrapper">
-    <span>This is my first task</span>
-    <div class="icons">
-        <div class="icon-wrapper not-done">
-            <font-awesome-icon icon="fa-regular fa-circle-check" class="icon" />
-        </div>
-        <div class="icon-wrapper delete">
-            <font-awesome-icon icon="fa-regular fa-trash-can" class="icon" />
-        </div>
-    </div>
-  </div>
-  <div class="task-wrapper">
-    <span>This is my second task</span>
-    <div class="icons">
-        <div class="icon-wrapper done">
-            <font-awesome-icon icon="fa-regular fa-circle-check" class="icon" />
-        </div>
-        <div class="icon-wrapper delete">
-            <font-awesome-icon icon="fa-regular fa-trash-can" class="icon" />
-        </div>
-    </div>
-  </div>
   <div class="task-wrapper" v-for="(todo, index) in todos" :key="index">
-    <span>{{ todo }}</span>
+    <span>{{ todo.name }}</span>
     <div class="icons">
-        <div class="icon-wrapper not-done">
+        <div class="icon-wrapper" :class="{done: todo.done}" @click="$emit('toggleDone', index)">
             <font-awesome-icon icon="fa-regular fa-circle-check" class="icon" />
         </div>
-        <div class="icon-wrapper delete">
+        <div class="icon-wrapper delete" @click="$emit('deleteTodo', index)">
             <font-awesome-icon icon="fa-regular fa-trash-can" class="icon" />
         </div>
     </div>
@@ -40,7 +17,8 @@ export default {
     name: 'ListComponent',
     props: {
         todos: Array
-    }
+    },
+    emits : ['toggleDone', 'deleteTodo']
 }
 </script>
 
@@ -71,29 +49,34 @@ export default {
     justify-content: center;
     align-items: center;
     border-radius: 100px;
+    background: rgba(123, 192, 238, 0.644);
+
+    &:hover {
+        cursor: pointer;
+        .icon {
+            height: 2rem;
+            transition: 0.1s ease;
+        }
+    }
 }
 
 .icon {
     height: 1.5rem;
     transition: 0.1s ease;
 
-    &:hover {
-        height: 2rem;
-        transition: 0.1s ease;
-        cursor: pointer;
-    }
+    // &:hover {
+    //     height: 2rem;
+    //     transition: 0.1s ease;
+    //     cursor: pointer;
+    // }
 }
 
 .done{
-    background: rgba(255, 239, 8, 0.295);
-}
-
-.not-done{
-    background: rgba(123, 192, 238, 0.644);
+    background: rgba(255, 239, 8, 0.295)!important;
 }
 
 .delete{
-    background: rgba(255, 46, 9, 0.445);
+    background: rgba(255, 46, 9, 0.445)!important;
 }
 
 </style>
