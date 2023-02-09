@@ -1,14 +1,31 @@
 <template>
-  <InputComponent />
+  <InputComponent style="justify-content: center" @addTodo="addTodo"/>
+  <ul>
+    <li v-for="(todo, index) in todos" :key="index">{{ todo }}</li>
+  </ul>
 </template>
 
 <script>
 import InputComponent from '@/components/InputComponent.vue'
+import { ref } from 'vue'
 
 export default {
   name: 'HomeView',
   components: {
     InputComponent
+  },
+  setup() {
+    const todos = ref([]);
+
+    const addTodo = (new_todo) => {
+      todos.value.push(new_todo);
+      console.log(todos.value)
+    }
+
+    return {
+      todos,
+      addTodo
+    }
   }
 }
 </script>

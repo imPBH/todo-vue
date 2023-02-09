@@ -16,5 +16,5 @@ library.add(faSquarePlus)
 
 createApp(App)
 .use(router)
-.component('fa', FontAwesomeIcon)
+.component('font-awesome-icon', FontAwesomeIcon)
 .mount('#app')

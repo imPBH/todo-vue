@@ -1,17 +1,32 @@
 <template>
   <div class="content-wrapper">
-    <div class="input-wrapper">
-        <input type="text" placeholder="New task">
+    <form class="input-wrapper" @submit.prevent="addTodo">
+        <input type="text" placeholder="New task" v-model="new_todo">
         <div class="icon-wrapper">
-            <fa icon="fa-regular fa-square-plus" class="add-icon"/>
+            <font-awesome-icon icon="fa-regular fa-square-plus" class="add-icon" @click="addTodo"/>
         </div>
-    </div>
+    </form>
   </div>
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
-    name: 'InputComponent'
+    name: 'InputComponent',
+    setup(props, ctx) {
+        const new_todo = ref('')
+
+        const addTodo = () => {
+            ctx.emit('addTodo', new_todo.value);
+            new_todo.value = '';
+        }
+
+        return {
+            new_todo,
+            addTodo
+        }
+    }
 }
 </script>
 
